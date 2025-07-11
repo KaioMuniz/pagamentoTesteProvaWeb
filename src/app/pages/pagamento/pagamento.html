@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h2>Carrinho de Compras</h2>
+
+  <div *ngIf="produtos.length > 0; else carrinhoVazio">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Produto</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos">
+            <td>{{produto.nome}}</td>
+            <td>{{produto.preco}}</td>
+            <td>1</td> 
+            <td>{{produto.preco}}</td> 
+            <td>
+              <button class="btn btn-danger" (click)="removerProduto(produto)">Remover</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+   
+    <div class="d-flex justify-content-between mt-4">
+      <h4>Total: {{ calcularTotal()}}</h4>
+      <button class="btn btn-success" (click)="realizarPagamento()">Pagar</button>
+    </div>
+  </div>
+
+  <ng-template #carrinhoVazio>
+    <div class="alert alert-warning" role="alert">
+      Seu carrinho está vazio! Adicione produtos para continuar.
+    </div>
+  </ng-template>
+</div>

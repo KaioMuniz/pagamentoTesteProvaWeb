@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <!-- Ícone do carrinho -->
+  <div class="position-fixed top-0 end-0 p-3">
+    <button class="btn btn-light" (click)="irParaCarrinho()">
+      <i class="fas fa-shopping-cart"></i> 
+      <span class="badge bg-danger">{{ obterContagemCarrinho() }}</span>
+    </button>
+  </div>
+
+  <h2>Produtos</h2>
+  <div class="row">
+    <!-- Produto 1 -->
+    <div class="col-12 col-md-4 mb-4" *ngFor="let produto of produtos">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{produto.nome}}</h5>
+          <p class="card-text">Preço: {{produto.preco | currency:'BRL'}}</p>
+          <button class="btn btn-primary" (click)="adicionarCarrinho(produto)">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
